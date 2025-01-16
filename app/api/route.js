@@ -2,6 +2,29 @@ import connectDB from "@/lib/mongodb";
 import Inquiry from "@/models/Inquiry";
 import { NextResponse } from "next/server";
 
+export async function GET(request, response) {
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
+    response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  
+    await dbConnect();
+  
+    try {
+      const inquiries = await Inquiry.find();
+      return response.status(200).json(inquiries);
+    } catch (error) {
+      console.error("Error al obtener las consultas:", error);
+      return response.status(500).json({ message: "Error al obtener las consultas" });
+    }
+  }
+  
+  export async function OPTIONS(request, response) {
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    return response.status(200).end();
+  }
+
 export async function POST(request) {
     await connectDB();
 
@@ -35,18 +58,3 @@ export async function POST(request) {
     }
 }
 
-export async function GET() {
-    await connectDB();
-
-    try {
-        // Obtener todas las consultas
-        const inquiries = await Inquiry.find();
-        return NextResponse.json(inquiries);
-    } catch (error) {
-        console.error("Error al obtener las consultas:", error);
-        return NextResponse.json(
-            { message: "Error al obtener las consultas", error },
-            { status: 500 }
-        );
-    }
-}
