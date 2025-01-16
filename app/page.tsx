@@ -254,9 +254,11 @@ export default function Home() {
                 className="space-y-4"
                 onSubmit={async (e) => {
                   e.preventDefault();
+                  const form = e.target as HTMLFormElement; // Asegurar que es un formulario
+
                   const formData = {
-                    email: e.target.email.value,
-                    message: e.target.message.value,
+                    email: (form.email as HTMLInputElement).value,
+                    message: (form.message as HTMLTextAreaElement).value,
                     source: "Landing Page Home",
                   };
 
@@ -268,7 +270,7 @@ export default function Home() {
 
                   if (response.ok) {
                     alert("Consulta enviada con éxito");
-                    e.target.reset();
+                    form.reset(); // Ahora TypeScript sabe que `form` es un formulario
                   } else {
                     alert("Hubo un problema al enviar tu consulta");
                   }
@@ -293,6 +295,7 @@ export default function Home() {
                   Enviar
                 </Button>
               </form>
+
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center">
