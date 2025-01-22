@@ -1,5 +1,6 @@
 "use client";
-
+import { Toaster, toast } from 'sonner';
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -16,6 +17,20 @@ import {
 import Image from "next/image";
 
 export default function Home() {
+  
+  // Especifica el tipo de elemento HTML para las referencias
+  const divisionsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  // Funciones para desplazarse a las secciones
+  const scrollToDivisions = () => {
+    divisionsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const divisions = [
     {
       title: "UNEG PowerTech",
@@ -100,11 +115,12 @@ export default function Home() {
   ];
 
   return (
+    
     <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center">
         <Image
-          src="https://images.unsplash.com/photo-1578319439584-104c94d37305?w=1920&h=1080&fit=crop"
+          src="/images/fondo-mineria.webp"
           alt="Mining Technology"
           fill
           className="object-cover"
@@ -119,10 +135,10 @@ export default function Home() {
             Soluciones integrales en maquinaria, asesoría, herramientas y diseño
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700" onClick={scrollToDivisions}>
               Explora nuestras divisiones
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/20">
+            <Button size="lg" variant="outline" className="text-black border-white hover:bg-white/70" onClick={scrollToContact}>
               Contáctanos
             </Button>
           </div>
@@ -130,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* Divisions */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50" ref={divisionsRef}>
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Nuestras Divisiones</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -170,6 +186,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* <div>
+       
+        <button onClick={() => toast('My first toast')}>
+          Give me a toast
+        </button>
+      </div> */}
 
       {/* Key Stats */}
       <section className="py-20 bg-blue-600 text-white">
@@ -221,6 +244,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
+      <Toaster position="bottom-center"/>
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -248,13 +272,14 @@ export default function Home() {
                 <li>Instagram</li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Consulta Rápida</h3>
+            <div ref={contactRef}>
+              <h3 className="text-xl font-bold mb-4">Haz tu consulta aqui</h3>
               <form
+                
                 className="space-y-4"
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  const form = e.target as HTMLFormElement; // Asegurar que es un formulario
+                  const form = e.target as HTMLFormElement; 
 
                   const formData = {
                     email: (form.email as HTMLInputElement).value,
@@ -269,10 +294,12 @@ export default function Home() {
                   });
 
                   if (response.ok) {
-                    alert("Consulta enviada con éxito");
-                    form.reset(); // Ahora TypeScript sabe que `form` es un formulario
+                    
+                    toast.success('Consulta enviada con exito');
+                    form.reset(); 
                   } else {
-                    alert("Hubo un problema al enviar tu consulta");
+                    
+                    toast.error("Hubo un problema al enviar tu consulta");
                   }
                 }}
               >
@@ -303,6 +330,11 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+     
+      <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+      <script src="https://files.bpcontent.cloud/2025/01/22/01/20250122015906-R8A5XB8X.js"></script>
+    
     </main>
   );
 }
