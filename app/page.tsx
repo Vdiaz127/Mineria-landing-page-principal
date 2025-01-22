@@ -15,6 +15,8 @@ import {
   Users,
 } from "lucide-react";
 import Image from "next/image";
+import Script from 'next/script';
+
 
 export default function Home() {
   
@@ -116,9 +118,9 @@ export default function Home() {
 
   return (
     
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <Image
           src="/images/fondo-mineria.webp"
           alt="Mining Technology"
@@ -186,13 +188,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* <div>
-       
-        <button onClick={() => toast('My first toast')}>
-          Give me a toast
-        </button>
-      </div> */}
 
       {/* Key Stats */}
       <section className="py-20 bg-blue-600 text-white">
@@ -331,9 +326,20 @@ export default function Home() {
         </div>
       </footer>
 
+      {/* Scripts del Chatbot */}
+      <div className="fixed bottom-4 right-4 z-50">
+      <Script 
+          src="https://cdn.botpress.cloud/webchat/v2.2/inject.js" 
+          strategy="lazyOnload" 
+          onLoad={() => console.log('Script de Botpress cargado.')} 
+        />
+        <Script 
+          src="https://files.bpcontent.cloud/2025/01/22/01/20250122015906-R8A5XB8X.js" 
+          strategy="lazyOnload" 
+          onLoad={() => console.log('Script adicional del chatbot cargado.')} 
+        />
+      </div>
      
-      <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-      <script src="https://files.bpcontent.cloud/2025/01/22/01/20250122015906-R8A5XB8X.js"></script>
     
     </main>
   );
