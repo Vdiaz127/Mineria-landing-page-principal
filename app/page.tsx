@@ -12,6 +12,7 @@ import {
   Lightbulb,
   MapPin,
   Trophy,
+  Target,
   Users,
 } from "lucide-react";
 import Image from "next/image";
@@ -35,22 +36,22 @@ export default function Home() {
 
   const divisions = [
     {
-      title: "UNEG PowerTech",
+      title: "LSM PowerTech",
       description: "Equipos y maquinaria avanzada para maximizar productividad",
       icon: <Cog className="w-12 h-12 text-blue-600" />,
     },
     {
-      title: "UNEG Essentials",
+      title: "LSM Essentials",
       description: "Herramientas de precisión diseñadas para minería moderna",
       icon: <HardHat className="w-12 h-12 text-blue-600" />,
     },
     {
-      title: "UNEG Consultores",
+      title: "LSM Consultores",
       description: "Asesoría en normativas legales y optimización administrativa",
       icon: <GraduationCap className="w-12 h-12 text-blue-600" />,
     },
     {
-      title: "UNEG Innovate",
+      title: "LSM Innovate",
       description: "Soluciones innovadoras en diseño arquitectónico y de infraestructura minera",
       icon: <Lightbulb className="w-12 h-12 text-blue-600" />,
     },
@@ -82,9 +83,9 @@ export default function Home() {
       icon: <Users className="w-8 h-8 text-blue-600" />,
     },
     {
-      title: "Presencia",
-      value: "4 países",
-      description: "Perú, Chile, México y Colombia",
+      title: "En todos los continentes", 
+      value: "Asociaciones",
+      description: "Contamos con una red global de aliados estratégicos", 
       icon: <MapPin className="w-8 h-8 text-blue-600" />,
     },
     {
@@ -99,19 +100,19 @@ export default function Home() {
     {
       name: "Carlos Rodríguez",
       role: "Director de Operaciones, Minera del Sur",
-      content: "UNEG-MINERÍA ha transformado completamente nuestra eficiencia operativa con su tecnología de vanguardia.",
+      content: "Latino Silver Mines ha transformado completamente nuestra eficiencia operativa con su tecnología de vanguardia.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     },
     {
       name: "Ana María Vega",
       role: "Gerente de Proyectos, MinesTech",
-      content: "La asesoría de UNEG Consultores fue fundamental para optimizar nuestros procesos administrativos.",
+      content: "La asesoría de Latino Silver Mines Consultores fue fundamental para optimizar nuestros procesos administrativos.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
     },
     {
       name: "Miguel Sánchez",
       role: "CEO, Minerales del Pacífico",
-      content: "Las soluciones de UNEG Innovate nos permitieron modernizar nuestra infraestructura de manera sostenible.",
+      content: "Las soluciones de Latino Silver Mines Innovate nos permitieron modernizar nuestra infraestructura de manera sostenible.",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
     },
   ];
@@ -120,9 +121,9 @@ export default function Home() {
     
     <main className="flex min-h-screen flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden"> 
         <Image
-          src="/images/fondo-mineria.webp"
+          src="/images/fondo-minera2.webp"
           alt="Mining Technology"
           fill
           className="object-cover"
@@ -130,6 +131,9 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+            Latino Silver Mines Ltd.
+          </h2>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Impulsando la Minería del Futuro en Latinoamérica
           </h1>
@@ -144,6 +148,67 @@ export default function Home() {
               Contáctanos
             </Button>
           </div>
+        </div>
+      </section>
+
+
+      {/* About Us Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">¿Quiénes somos?</h2>
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              En Latino Silver Mines , somos una empresa líder en Latinoamérica especializada en soluciones integrales para la industria minera. Con más de una década de experiencia, combinamos innovación tecnológica, excelencia en servicios y un compromiso con el desarrollo sostenible. Nuestro objetivo es transformar la minería mediante herramientas avanzadas, asesoría estratégica y diseños vanguardistas que impulsen la productividad y el cuidado del medioambiente.
+            </p>
+            <p className="text-lg text-gray-700 mb-12 leading-relaxed">
+              Estamos presentes en Venezuela, Perú, Chile, México y Colombia, apoyando a empresas mineras a optimizar sus operaciones y superar los desafíos del sector.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="bg-blue-50 border-none hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex justify-center mb-4">
+                  <Target className="w-12 h-12 text-blue-600" />
+                </div>
+                <CardTitle className="text-2xl text-center text-blue-800">Misión</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 text-center leading-relaxed">
+                  Proveer soluciones integrales y sostenibles que transformen la industria minera en Latinoamérica, combinando tecnología avanzada, asesoría experta y diseños innovadores para maximizar la eficiencia operativa y el desarrollo responsable.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-blue-50 border-none hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex justify-center mb-4">
+                  <Lightbulb className="w-12 h-12 text-blue-600" />
+                </div>
+                <CardTitle className="text-2xl text-center text-blue-800">Visión</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 text-center leading-relaxed">
+                  Ser reconocidos como el socio estratégico líder en la transformación de la minería en Latinoamérica, destacándonos por nuestra innovación, compromiso ambiental y excelencia en el servicio, creando un impacto positivo en las comunidades y el sector industrial.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* International Presence Section */}
+      <section className="relative py-32">
+        <Image
+          src="/images/presencia.webp"
+          alt="Presencia en Venezuela, Perú, Chile, México y Colombia"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 container mx-auto px-4 text-center text-white">
+          <h2 className="text-5xl font-bold mb-6">Sedes en 5 Países</h2>
+          <p className="text-2xl font-light">Venezuela, Perú, Chile, México y Colombia</p>
         </div>
       </section>
 
@@ -240,22 +305,22 @@ export default function Home() {
 
       {/* Footer */}
       <Toaster position="bottom-center"/>
-      <footer className="bg-gray-900 text-white py-12">
+      <footer ref={contactRef} className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">Contacto</h3>
               <p>+51 123 456 789</p>
-              <p>contacto@uneg-mineria.com</p>
-              <p>Av. Minería 123, Lima, Perú</p>
+              <p>contacto@LSM.com</p>
+              <p>Edificio General de Seguros, Avenida Las Américas, Puerto Ordaz, Estado Bolívar - Venezuela</p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4">Divisiones</h3>
               <ul className="space-y-2">
-                <li>UNEG PowerTech</li>
-                <li>UNEG Essentials</li>
-                <li>UNEG Consultores</li>
-                <li>UNEG Innovate</li>
+                <li>LSM PowerTech</li>
+                <li>LSM Essentials</li>
+                <li>LSM Consultores</li>
+                <li>LSM Innovate</li>
               </ul>
             </div>
             <div>
@@ -267,8 +332,8 @@ export default function Home() {
                 <li>Instagram</li>
               </ul>
             </div>
-            <div ref={contactRef}>
-              <h3 className="text-xl font-bold mb-4">Haz tu consulta aqui</h3>
+            <div >
+              <h3 className="text-xl font-bold mb-4">Haz tu consulta rapida aqui</h3>
               <form
                 
                 className="space-y-4"
@@ -321,7 +386,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-            <p>© 2024 UNEG-MINERÍA. Todos los derechos reservados.</p>
+            <p>© 2024 Latino Silver Mines Ltd. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

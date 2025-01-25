@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'UNEG-MINERÍA | Impulsando la Minería del Futuro',
+  title: 'Latino Silver Mines Ltd. | Impulsando la Minería del Futuro',
   description: 'Soluciones integrales en maquinaria, asesoría, herramientas y diseño para la minería moderna en Latinoamérica.',
 };
 
