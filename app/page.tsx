@@ -100,19 +100,19 @@ export default function Home() {
     {
       name: "Carlos Rodríguez",
       role: "Director de Operaciones, Minera del Sur",
-      content: "Latino Silver Mines ha transformado completamente nuestra eficiencia operativa con su tecnología de vanguardia.",
+      content: "Latin Silver Mines ha transformado completamente nuestra eficiencia operativa con su tecnología de vanguardia.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     },
     {
       name: "Ana María Vega",
       role: "Gerente de Proyectos, MinesTech",
-      content: "La asesoría de Latino Silver Mines Consultores fue fundamental para optimizar nuestros procesos administrativos.",
+      content: "La asesoría de Latin Silver Mines Consultores fue fundamental para optimizar nuestros procesos administrativos.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
     },
     {
       name: "Miguel Sánchez",
       role: "CEO, Minerales del Pacífico",
-      content: "Las soluciones de Latino Silver Mines Innovate nos permitieron modernizar nuestra infraestructura de manera sostenible.",
+      content: "Las soluciones de Latin Silver Mines Innovate nos permitieron modernizar nuestra infraestructura de manera sostenible.",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
     },
   ];
@@ -132,10 +132,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Latino Silver Mines Ltd.
+            Latin Silver Mines Ltd.
           </h2>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Impulsando la Minería del Futuro en Latinoamérica
+            Impulsando la Minería del Futuro en Latinamérica
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Soluciones integrales en maquinaria, asesoría, herramientas y diseño
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">¿Quiénes somos?</h2>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              En Latino Silver Mines , somos una empresa líder en Latinoamérica especializada en soluciones integrales para la industria minera. Con más de una década de experiencia, combinamos innovación tecnológica, excelencia en servicios y un compromiso con el desarrollo sostenible. Nuestro objetivo es transformar la minería mediante herramientas avanzadas, asesoría estratégica y diseños vanguardistas que impulsen la productividad y el cuidado del medioambiente.
+              En Latin Silver Mines , somos una empresa líder en Latinamérica especializada en soluciones integrales para la industria minera. Con más de una década de experiencia, combinamos innovación tecnológica, excelencia en servicios y un compromiso con el desarrollo sostenible. Nuestro objetivo es transformar la minería mediante herramientas avanzadas, asesoría estratégica y diseños vanguardistas que impulsen la productividad y el cuidado del medioambiente.
             </p>
             <p className="text-lg text-gray-700 mb-12 leading-relaxed">
               Estamos presentes en Venezuela, Perú, Chile, México y Colombia, apoyando a empresas mineras a optimizar sus operaciones y superar los desafíos del sector.
@@ -175,7 +175,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700 text-center leading-relaxed">
-                  Proveer soluciones integrales y sostenibles que transformen la industria minera en Latinoamérica, combinando tecnología avanzada, asesoría experta y diseños innovadores para maximizar la eficiencia operativa y el desarrollo responsable.
+                  Proveer soluciones integrales y sostenibles que transformen la industria minera en Latinamérica, combinando tecnología avanzada, asesoría experta y diseños innovadores para maximizar la eficiencia operativa y el desarrollo responsable.
                 </p>
               </CardContent>
             </Card>
@@ -189,7 +189,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700 text-center leading-relaxed">
-                  Ser reconocidos como el socio estratégico líder en la transformación de la minería en Latinoamérica, destacándonos por nuestra innovación, compromiso ambiental y excelencia en el servicio, creando un impacto positivo en las comunidades y el sector industrial.
+                  Ser reconocidos como el socio estratégico líder en la transformación de la minería en Latinamérica, destacándonos por nuestra innovación, compromiso ambiental y excelencia en el servicio, creando un impacto positivo en las comunidades y el sector industrial.
                 </p>
               </CardContent>
             </Card>
@@ -303,18 +303,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <Toaster position="bottom-center"/>
-      <footer ref={contactRef} className="bg-gray-900 text-white py-12">
+       {/* Contact Section */}
+       <section className="py-20 bg-gray-100" ref={contactRef}>
+       <Toaster position="bottom-center"/>
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Contacto</h3>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-4xl font-bold mb-4">¿Estás interesado en nuestros servicios?</h2>
+            <p className="text-lg text-gray-700">
+              Contáctanos y te responderemos lo antes posible.
+            </p>
+          </div>
+          <form
+            className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg space-y-4"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.target as HTMLFormElement;
+
+              const formData = {
+                email: (form.email as HTMLInputElement).value,
+                message: (form.message as HTMLTextAreaElement).value,
+                source: "Landing Page Contact Section",
+              };
+
+              const response = await fetch("/api", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+              });
+
+              if (response.ok) {
+                toast.success("Consulta enviada con éxito");
+                form.reset();
+              } else {
+                toast.error("Hubo un problema al enviar tu consulta");
+              }
+            }}
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="Tu correo electrónico"
+              className="w-full p-3 rounded bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Tu mensaje"
+              className="w-full p-3 rounded bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows={4}
+              required
+            />
+            <input type="hidden" name="source" value="Landing Page Contact Section" />
+            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+              Enviar
+            </Button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div className="flex flex-col items-center md:items-start">
+              <h3 className="text-xl font-bold mb-4">Informacion adicional de contacto</h3>
               <p>+51 123 456 789</p>
               <p>contacto@LSM.com</p>
               <p>Edificio General de Seguros, Avenida Las Américas, Puerto Ordaz, Estado Bolívar - Venezuela</p>
             </div>
-            <div>
+            <div className="flex flex-col items-center md:items-start">
               <h3 className="text-xl font-bold mb-4">Divisiones</h3>
               <ul className="space-y-2">
                 <li>LSM PowerTech</li>
@@ -323,7 +380,7 @@ export default function Home() {
                 <li>LSM Innovate</li>
               </ul>
             </div>
-            <div>
+            <div className="flex flex-col items-center md:items-start">
               <h3 className="text-xl font-bold mb-4">Redes Sociales</h3>
               <ul className="space-y-2">
                 <li>LinkedIn</li>
@@ -332,64 +389,13 @@ export default function Home() {
                 <li>Instagram</li>
               </ul>
             </div>
-            <div >
-              <h3 className="text-xl font-bold mb-4">Haz tu consulta rapida aqui</h3>
-              <form
-                
-                className="space-y-4"
-                onSubmit={async (e) => {
-                  e.preventDefault();
-                  const form = e.target as HTMLFormElement; 
-
-                  const formData = {
-                    email: (form.email as HTMLInputElement).value,
-                    message: (form.message as HTMLTextAreaElement).value,
-                    source: "Landing Page Home",
-                  };
-
-                  const response = await fetch('/api', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData),
-                  });
-
-                  if (response.ok) {
-                    
-                    toast.success('Consulta enviada con exito');
-                    form.reset(); 
-                  } else {
-                    
-                    toast.error("Hubo un problema al enviar tu consulta");
-                  }
-                }}
-              >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Tu correo electrónico"
-                  className="w-full p-2 rounded bg-gray-800 border border-gray-700"
-                  required
-                />
-                <textarea
-                  name="message"
-                  placeholder="Tu mensaje"
-                  className="w-full p-2 rounded bg-gray-800 border border-gray-700"
-                  rows={3}
-                  required
-                />
-                <input type="hidden" name="source" value="Landing Page Home" />
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                  Enviar
-                </Button>
-              </form>
-
-            </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-            <p>© 2024 Latino Silver Mines Ltd. Todos los derechos reservados.</p>
+            <p>© 2025 Latin Silver Mines Ltd. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
+
 
       {/* Scripts del Chatbot */}
       <div className="fixed bottom-4 right-4 z-50">
