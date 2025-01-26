@@ -322,7 +322,7 @@ export default function Home() {
               const formData = {
                 email: (form.email as HTMLInputElement).value,
                 message: (form.message as HTMLTextAreaElement).value,
-                source: "Landing Page Contact Section",
+                source: "Landing Page Principal",
               };
 
               const response = await fetch("/api", {
